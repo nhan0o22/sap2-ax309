@@ -17,7 +17,7 @@ Chương trình mẫu tính **12 × 8 bằng cộng lặp**. Kết quả cuối:
 .\prepare-program.ps1
 ```
 
-Sau đó build và nạp lại. Script `sync-ise-staging.ps1` chỉ cần khi dùng hai thư mục nguồn/staging riêng; truyền `-StagingRoot` đúng máy của bạn.
+Sau đó build và nạp lại. Không cần thư mục staging hoặc script đồng bộ khi build trực tiếp từ repository này.
 
 ## Điều khiển
 
@@ -39,29 +39,8 @@ Sau reset, ba lần KEY2 đầu cho PC = 02, 04, 06; B = 0C, C = 08. Lần tiế
 - `ax309_io.v`: nút, clock CPU, lịch chạy và hiển thị.
 - `program.bin`: chương trình; `program_ise.mem`: ảnh RAM dẫn xuất; `ctrl_rom.bin`: microcode.
 - `ax309.ucf`: chân board và timing; `sap2v2.xise`: project CPU.
-- `io_demo.xise`: project kiểm tra I/O độc lập.
-- `*_tb.v`: testbench mô phỏng; không dùng làm top tổng hợp.
+- `prepare-program.ps1`: tạo lại ảnh RAM khi đổi chương trình.
 
-## Mô phỏng
+Repository giữ bộ nguồn cần build và README sử dụng. Demo I/O, testbench, tài liệu ôn thi, script phụ và output build không nằm trong bản này.
 
-Windows cần Icarus Verilog (`iverilog.exe`, `vvp.exe`). Bộ công cụ không được đóng gói trong repository:
-
-```powershell
-.\run-sim.ps1 -ToolRoot 'C:\duong-dan\iverilog\bin' -Trace
-```
-
-Trong môi trường dòng lệnh ISE Linux đã nạp thiết lập công cụ:
-
-```bash
-bash run-sim-ise.sh
-```
-
-Không suy kết quả PASS từ synthesis: cần chạy simulator và đọc log PASS/FAIL. Xem giới hạn, lịch sử kiểm thử và xác nhận board trong [SIMULATION_RESULTS.md](SIMULATION_RESULTS.md).
-
-## Tài liệu tiếng Việt
-
-- [Hướng dẫn AX309](README_AX309.md)
-- [Thuyết trình 2–3 phút](THUYET_TRINH_SAP2.md)
-- [Ôn thi vấn đáp và chức năng từng file](ON_THI_VAN_DAP_SAP2.md)
-
-Demo xác nhận chương trình mẫu, chưa chứng minh mọi opcode. ALU/thanh ghi 8 bit có thể tràn; cơ chế return_addr hiện không phải stack gọi lồng nhiều mức. Repository chỉ chứa nguồn và tài liệu; bitstream, log và artifact ISE/ISim được bỏ qua.
+Demo xác nhận chương trình mẫu, chưa chứng minh mọi opcode. ALU/thanh ghi 8 bit có thể tràn; cơ chế return_addr hiện không phải stack gọi lồng nhiều mức.

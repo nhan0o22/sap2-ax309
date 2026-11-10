@@ -1,0 +1,19 @@
+# Chi theo doi nguon du an; bo qua output ISE/ISim va bitstream cu.
+/*
+!/.gitignore
+!/README.md
+!/README_AX309.md
+!/SIMULATION_RESULTS.md
+!/THUYET_TRINH_SAP2.md
+!/ON_THI_VAN_DAP_SAP2.md
+!/*.v
+!/*.ucf
+!/*.xise
+!/program.bin
+!/ctrl_rom.bin
+!/program_ise.mem
+!/prepare-program.ps1
+!/check-ise-build.ps1
+!/sync-ise-staging.ps1
+!/run-sim.ps1
+!/run-sim-ise.sh
